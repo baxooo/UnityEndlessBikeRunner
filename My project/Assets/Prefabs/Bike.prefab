@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5670020978864990602}
   - component: {fileID: 8362204995478555682}
   - component: {fileID: 5175123338309162184}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Vehicle01_PizzaBoxMeshA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 3131414953494587552}
   - component: {fileID: 5078823428714228224}
   - component: {fileID: 7650864924478292433}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Vehicle01_FrontWheelCoverMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8298269469703480047}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CameraPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1181498727770824713}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Helper_BackWheelPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,7 +238,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8518120272992199104}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Helper_FrontWheelPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +270,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 874925867323109160}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Helper_Steering
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -304,7 +304,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 849444793055944490}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Helper_MainBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -336,7 +336,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8205930901098791193}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Vehicle01_Vespa
   m_TagString: Bike
   m_Icon: {fileID: 0}
@@ -373,7 +373,7 @@ GameObject:
   - component: {fileID: 4117856757706762466}
   - component: {fileID: 9081500358778749851}
   - component: {fileID: 8475798440064379176}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Vehicle01_WheelMesh (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -454,7 +454,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4574577454849507130}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Helper_PizzaBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -488,7 +488,7 @@ GameObject:
   - component: {fileID: 3793409492950758052}
   - component: {fileID: 8152900644163712446}
   - component: {fileID: 3744644319668689763}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Vehicle01_BodyMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -571,7 +571,7 @@ GameObject:
   - component: {fileID: 7899400783775494653}
   - component: {fileID: 1543954312018614379}
   - component: {fileID: 5979524549839549662}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Vehicle01_WheelMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -652,7 +652,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8425866620820523867}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Vehicle01_Vespa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -688,7 +688,7 @@ GameObject:
   - component: {fileID: 5880090996592906250}
   - component: {fileID: 7773556408796268641}
   - component: {fileID: 6437990695727948458}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bike
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -763,7 +763,6 @@ MonoBehaviour:
   _bikeBody: {fileID: 8192074784629823201}
   _steeringColumn: {fileID: 5257380193024470094}
   _cameraPosition: {fileID: 577221539933419396}
-  SpawnGridPrefab: {fileID: 7625139533108972045, guid: 0cc8554b55f641b47910ed4e2c150754, type: 3}
 --- !u!136 &7773556408796268641
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -825,7 +824,7 @@ GameObject:
   - component: {fileID: 1762847848764552913}
   - component: {fileID: 3816913088636415763}
   - component: {fileID: 2146498890230678152}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Vehicle01_HandleBarMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}

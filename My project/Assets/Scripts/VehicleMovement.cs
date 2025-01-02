@@ -110,6 +110,10 @@ public class VehicleMovement : MonoBehaviour
             return;
         }
 
+
+        if (!hit.transform.gameObject.CompareTag("Car"))
+            return;
+
         var otherVehicle = hit.transform.gameObject.GetComponent<VehicleMovement>();
 
         //slowdown if the other vehicle is slower
