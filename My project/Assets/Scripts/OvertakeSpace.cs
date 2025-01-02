@@ -21,7 +21,7 @@ public class OvertakeSpace : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Car"))
+        if (other || !other.CompareTag("Car"))
             return;
 
         _renderer.material = red;
@@ -30,7 +30,7 @@ public class OvertakeSpace : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (!other.CompareTag("Car"))
+        if (other || !other.CompareTag("Car"))
             return;
 
         _renderer.material = green;
