@@ -20232,7 +20232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d46bb1c2396bf946ac6d2a76127f80d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minCarsAtOnce: 18
+  minCarsAtOnce: 15
   vehicles:
   - {fileID: 7769690492283750692, guid: f40e52a0c26735a46b681671fb2baa40, type: 3}
   - {fileID: 8663673574762740106, guid: 3f83a5a9639ce0249ac0d7df9b8c40b9, type: 3}

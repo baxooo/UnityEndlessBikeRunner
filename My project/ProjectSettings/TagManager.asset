@@ -10,6 +10,8 @@ TagManager:
   - SpawnerCollider
   - Car
   - OvertakeSpaces
+  - LeftOvertakeSpace
+  - RightOvertakeSpace
   layers:
   - Default
   - TransparentFX

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class OvertakeSpace : MonoBehaviour
@@ -14,15 +12,23 @@ public class OvertakeSpace : MonoBehaviour
     private void Start()
     {
         _renderer = GetComponent<Renderer>();
-        _renderer.material = green;
+        if (_renderer == null)
+        {
+            Debug.LogError("Renderer component not found! Component Id:" + GetInstanceID());
+            return;
+        }
 
+        _renderer.material = green;
         IsEmpty = true;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other || !other.CompareTag("Car"))
+        if (!other || !other.CompareTag("Car"))
             return;
+
+        if (_renderer == null)
+            _renderer = GetComponent<Renderer>();
 
         _renderer.material = red;
         IsEmpty = false;
@@ -30,8 +36,11 @@ public class OvertakeSpace : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other || !other.CompareTag("Car"))
+        if (!other || !other.CompareTag("Car"))
             return;
+
+        if (_renderer == null)
+            _renderer = GetComponent<Renderer>();
 
         _renderer.material = green;
         IsEmpty = true;

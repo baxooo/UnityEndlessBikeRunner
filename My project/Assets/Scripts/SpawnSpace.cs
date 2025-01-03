@@ -13,7 +13,11 @@ namespace DefaultNamespace
 
         private void Start()
         {
-            _renderer = GetComponent<Renderer>();
+            while (!TryGetComponent<Renderer>(out _renderer))
+            {
+                Debug.Log("Waiting for renderer component... Component Id:" + GetInstanceID());
+            }
+            
             _renderer.material = Green;
             IsEmpty = true;
         }
