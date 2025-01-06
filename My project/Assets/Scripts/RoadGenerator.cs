@@ -11,24 +11,25 @@ public class RoadGenerator : MonoBehaviour
     private Vector3 _lastEndPosition;
     private int _currentRoad;
     private GameManager _gameManager;
-    
+
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         _player = _gameManager.Player;
 
-        _currentRoad = 0;  
+        _currentRoad = 0;
         _lastEndPosition = _levelPartArray[_currentRoad].Find("End").position;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (_lastEndPosition.z < _player.transform.position.z)
         {
-            _levelPartArray[_currentRoad].position = new Vector3(0, 0, _levelPartArray[_currentRoad].position.z + (90 * _levelPartArray.Length));
+            _levelPartArray[_currentRoad].position = new Vector3(0, 0,
+                _levelPartArray[_currentRoad].position.z + 90 * _levelPartArray.Length);
 
             _currentRoad++;
             if (_currentRoad == _levelPartArray.Length)

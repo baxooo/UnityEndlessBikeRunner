@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using DefaultNamespace;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class VehicleMovement : MonoBehaviour
@@ -38,7 +39,7 @@ public class VehicleMovement : MonoBehaviour
     //overtake manager
     public GameObject overtakeManagerPrefab;
     private VehicleOvertakeManager _overtakeManager;
-    
+
     private VehicleMovement _cachedVehicleInFront;
 
 
@@ -134,14 +135,13 @@ public class VehicleMovement : MonoBehaviour
 
         if (!hit.transform.gameObject.CompareTag("Car"))
             return;
-        
+
         if (!_cachedVehicleInFront || _cachedVehicleInFront.gameObject != hit.transform.gameObject)
-        {
-            hit.transform.gameObject.TryGetComponent(out _cachedVehicleInFront); 
-        }
+            hit.transform.gameObject.TryGetComponent(out _cachedVehicleInFront);
 
         //slowdown if the other vehicle is slower
-        if(Speed > _cachedVehicleInFront.Speed && _cachedVehicleInFront.transform.position.z - transform.position.z < 10)
+        if (Speed > _cachedVehicleInFront.Speed &&
+            _cachedVehicleInFront.transform.position.z - transform.position.z < 15)
             Speed = Mathf.Lerp(Speed, _cachedVehicleInFront.Speed - 2, 0.2f);
         else if (Speed > _cachedVehicleInFront.Speed)
             Speed = Mathf.Lerp(Speed, _cachedVehicleInFront.Speed, 0.15f);
@@ -152,8 +152,8 @@ public class VehicleMovement : MonoBehaviour
 
     private void ChangeLane()
     {
-        if (transform.position.z - _player.transform.position.z < 20) return; //don't overtake if too close to player
-        
+        if (transform.position.z - _player.transform.position.z < 35) return; //don't overtake if too close to player
+
         var currentPosition =
             _possiblePositions.FirstOrDefault(v => Math.Abs(v.Value - transform.position.x) < 0.1).Key;
 

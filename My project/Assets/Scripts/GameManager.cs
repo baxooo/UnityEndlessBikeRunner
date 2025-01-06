@@ -2,6 +2,7 @@ using Assets.Scripts.Enums;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -16,11 +17,13 @@ public class GameManager : MonoBehaviour
     public Text Speed;
     public Text OvertakeCombo;
 
-    public GameObject PanelMenu;
-    public GameObject PanelPause;
-    public GameObject PanelGameOver;
+    public GameObject panelMenu;
+    public GameObject panelPause;
+    public GameObject panelGameOver;
+    public GameObject panelPlay;
 
-    public GameObject Player;
+    public GameObject Player { get; private set; }
+    private CharacterController _playerController;
     private GameObject _environment;
     private GameObject _showRoom;
     private StateEnum _currentState;
@@ -46,19 +49,20 @@ public class GameManager : MonoBehaviour
         switch (state)
         {
             case StateEnum.MENU:
-                PanelMenu.SetActive(true);
+                panelMenu.SetActive(true);
                 _showRoom.SetActive(true);
                 _currentState = state;
                 break;
             case StateEnum.PLAY:
+                panelPlay.SetActive(true);
                 _currentState = state;
                 break;
             case StateEnum.PAUSE:
-                PanelPause.SetActive(true);
+                panelPause.SetActive(true);
                 _currentState = state;
                 break;
             case StateEnum.GAMEOVER:
-                PanelGameOver.SetActive(true);
+                panelGameOver.SetActive(true);
                 Time.timeScale = 0;
                 _currentState = state;
                 break;
@@ -70,16 +74,17 @@ public class GameManager : MonoBehaviour
         switch (_currentState)
         {
             case StateEnum.MENU:
-                PanelMenu.SetActive(false);
+                panelMenu.SetActive(false);
                 _showRoom.SetActive(false);
                 break;
             case StateEnum.PLAY:
+                panelPlay.SetActive(false);
                 break;
             case StateEnum.PAUSE:
-                PanelPause.SetActive(false);
+                panelPause.SetActive(false);
                 break;
             case StateEnum.GAMEOVER:
-                PanelGameOver.SetActive(false);
+                panelGameOver.SetActive(false);
                 Time.timeScale = 1;
                 break;
         }
@@ -93,14 +98,18 @@ public class GameManager : MonoBehaviour
             case StateEnum.MENU:
                 break;
             case StateEnum.PLAY:
+
                 if (!Player) // checks if player is null
                 {
                     Player = Instantiate(_playerPrefab);
                     SpawnGrid = Instantiate(SpawnGridPrefab);
+                    Player.TryGetComponent(out _playerController);
                 }
 
                 if (!_environment)
                     _environment = Instantiate(_environmentPrefab);
+                Speed.text = "Speed: " + _playerController.velocity.z.ToString("F0") + " km/h";
+
                 break;
             case StateEnum.GAMEOVER:
                 break;

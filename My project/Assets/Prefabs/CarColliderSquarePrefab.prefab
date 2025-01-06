@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 75350830372464372}
   - component: {fileID: 5556443538480750474}
   - component: {fileID: 3749301455176401610}
-  - component: {fileID: 3811992579653420002}
   m_Layer: 9
   m_Name: CarColliderSquarePrefab
   m_TagString: RightOvertakeSpace
@@ -119,33 +118,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39df0b2b4bd9d7940af64610df3342e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColliderSquarePrefab: {fileID: 0}
   green: {fileID: 2100000, guid: c14020d41051c954985905a4ce8ddee3, type: 2}
   red: {fileID: 2100000, guid: f5e6d9ddd3281ce458ab30a96e4c8884, type: 2}
---- !u!54 &3811992579653420002
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7860672275896804877}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 116
-  m_CollisionDetection: 0
