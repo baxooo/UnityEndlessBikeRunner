@@ -38,6 +38,8 @@ public class VehicleMovement : MonoBehaviour
     //overtake manager
     public GameObject overtakeManagerPrefab;
     private VehicleOvertakeManager _overtakeManager;
+    
+    private VehicleMovement _cachedVehicleInFront;
 
 
     // Start is called before the first frame update
@@ -132,12 +134,17 @@ public class VehicleMovement : MonoBehaviour
 
         if (!hit.transform.gameObject.CompareTag("Car"))
             return;
-
-        var otherVehicle = hit.transform.gameObject.GetComponent<VehicleMovement>();
+        
+        if (!_cachedVehicleInFront || _cachedVehicleInFront.gameObject != hit.transform.gameObject)
+        {
+            hit.transform.gameObject.TryGetComponent(out _cachedVehicleInFront); 
+        }
 
         //slowdown if the other vehicle is slower
-        if (Speed > otherVehicle.Speed)
-            Speed = Mathf.Lerp(Speed, otherVehicle.Speed, 0.15f);
+        if(Speed > _cachedVehicleInFront.Speed && _cachedVehicleInFront.transform.position.z - transform.position.z < 10)
+            Speed = Mathf.Lerp(Speed, _cachedVehicleInFront.Speed - 2, 0.2f);
+        else if (Speed > _cachedVehicleInFront.Speed)
+            Speed = Mathf.Lerp(Speed, _cachedVehicleInFront.Speed, 0.15f);
 
         if (_canOvertake && !_changingLane)
             ChangeLane();
@@ -145,14 +152,16 @@ public class VehicleMovement : MonoBehaviour
 
     private void ChangeLane()
     {
+        if (transform.position.z - _player.transform.position.z < 20) return; //don't overtake if too close to player
+        
         var currentPosition =
             _possiblePositions.FirstOrDefault(v => Math.Abs(v.Value - transform.position.x) < 0.1).Key;
 
         var leftLaneExists = _possiblePositions.ContainsKey(currentPosition - 1);
         var rightLaneExists = _possiblePositions.ContainsKey(currentPosition + 1);
 
-        var canMoveLeft = leftLaneExists && _overtakeManager.IsLeftFree;
 
+        var canMoveLeft = leftLaneExists && _overtakeManager.IsLeftFree;
         var canMoveRight = rightLaneExists && _overtakeManager.IsRightFree;
 
         if (canMoveLeft && canMoveRight)

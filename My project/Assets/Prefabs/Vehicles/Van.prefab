@@ -436,7 +436,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minSpeed: 7
-  wheels: []
+  wheels:
+  - {fileID: 3818333531529157001}
+  - {fileID: 204101444302569888}
+  - {fileID: 6194196188313719325}
+  - {fileID: 7151311968345750782}
   carLayer:
     serializedVersion: 2
     m_Bits: 256
