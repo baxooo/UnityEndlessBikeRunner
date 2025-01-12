@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     private GameObject _showRoom;
     private StateEnum _currentState;
 
+    private float _score;
+
     private Camera _camera;
 
     // Start is called before the first frame update
@@ -36,6 +38,8 @@ public class GameManager : MonoBehaviour
         _showRoom = Instantiate(_showRoomPrefab);
         SwitchState(StateEnum.MENU);
         _camera = Camera.main;
+
+        Score.text = "Score: 0";
     }
 
     public void SwitchState(StateEnum newState)
@@ -85,6 +89,7 @@ public class GameManager : MonoBehaviour
                 break;
             case StateEnum.GAMEOVER:
                 panelGameOver.SetActive(false);
+                _score = 0;
                 Time.timeScale = 1;
                 break;
         }
@@ -98,22 +103,35 @@ public class GameManager : MonoBehaviour
             case StateEnum.MENU:
                 break;
             case StateEnum.PLAY:
+                if (!Player)
+                    CheckForPlayer();
+                if (_playerController.velocity.z > 25)
+                    CalculateScore();
 
-                if (!Player) // checks if player is null
-                {
-                    Player = Instantiate(_playerPrefab);
-                    SpawnGrid = Instantiate(SpawnGridPrefab);
-                    Player.TryGetComponent(out _playerController);
-                }
-
-                if (!_environment)
-                    _environment = Instantiate(_environmentPrefab);
                 Speed.text = "Speed: " + _playerController.velocity.z.ToString("F0") + " km/h";
+
 
                 break;
             case StateEnum.GAMEOVER:
                 break;
         }
+    }
+
+    private void CalculateScore()
+    {
+        _score += _playerController.velocity.z * Time.fixedDeltaTime / 10;
+
+        Score.text = $"Score: {_score:F0}";
+    }
+
+    private void CheckForPlayer()
+    {
+        Player = Instantiate(_playerPrefab);
+        SpawnGrid = Instantiate(SpawnGridPrefab);
+        Player.TryGetComponent(out _playerController);
+
+        if (!_environment)
+            _environment = Instantiate(_environmentPrefab);
     }
 
     public void PlayClicked()
@@ -137,6 +155,7 @@ public class GameManager : MonoBehaviour
         Destroy(_environment);
         Destroy(SpawnGrid);
 
+        Score.text = "Score: 0";
         PlayClicked();
     }
 

@@ -64,7 +64,7 @@ public class VehicleMovement : MonoBehaviour
         _canOvertake = UnityEngine.Random.Range(0, 100) < 50;
 
         Speed = Mathf.Max(minSpeed + UnityEngine.Random.Range(0f, 2f),
-            _player.velocity.z * 0.6f + UnityEngine.Random.Range(-2f, 2f));
+            _player.velocity.z * 0.6f + UnityEngine.Random.Range(-5f, 5f));
         _originalSpeed = Speed;
         _targetLaneX = transform.position.x;
         _bounds = GetComponent<BoxCollider>().bounds.size;
